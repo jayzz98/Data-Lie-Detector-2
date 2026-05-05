@@ -436,9 +436,11 @@ html, body, .stApp, [data-testid="stAppViewContainer"], .login-wrapper {
 }
 ::-webkit-scrollbar { display: none !important; }
 * { scrollbar-width: none !important; -ms-overflow-style: none !important; }
-.main .block-container { padding-top: 0 !important; padding-bottom: 0 !important; }
+.main .block-container { padding: 0 !important; }
+div[data-testid="stVerticalBlock"] > div { margin-top: -5px !important; }
+
 .login-wrapper {
-    display: flex; justify-content: center; align-items: center; min-height: 10vh;
+    display: flex; justify-content: center; align-items: center; min-height: 5vh;
     font-family: 'Inter', sans-serif; position: relative;
 }
 .login-container {
