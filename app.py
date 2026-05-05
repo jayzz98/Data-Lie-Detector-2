@@ -198,6 +198,9 @@ st.markdown("""
         background:rgba(123,47,247,0.2)!important; border-color:rgba(123,47,247,0.4)!important;
         transform:translateY(-1px)!important;
     }
+    /* ══ SIDEBAR TIGHTENING ══ */
+    [data-testid="stSidebar"] [data-testid="stVerticalBlock"] > div { margin-top: -0.8rem !important; }
+    [data-testid="stSidebar"] hr { margin: 0.5rem 0 !important; opacity: 0.1; }
 
     /* ══ TABS ══ */
     .stTabs [data-baseweb="tab-list"] {
