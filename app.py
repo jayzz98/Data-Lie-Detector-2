@@ -440,7 +440,7 @@ html, body, .stApp, [data-testid="stAppViewContainer"], .login-wrapper {
 
 .login-wrapper {
     display: flex; justify-content: center; align-items: flex-start;
-    font-family: 'Inter', sans-serif; padding-top: 1rem;
+    font-family: 'Inter', sans-serif; padding-top: 0;
 }
 .login-container {
     background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(24px);
@@ -490,7 +490,7 @@ Continue with Microsoft
     st.markdown(css_code + login_html, unsafe_allow_html=True)
 
     # Place Email logic immediately after the main container using negative margin for tightness
-    st.markdown("<div style='margin-top: -11.5rem;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-top: -13rem;'></div>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         email_input = st.text_input("Email Address", placeholder="name@company.com", label_visibility="collapsed")
