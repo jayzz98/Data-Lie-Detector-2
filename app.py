@@ -594,7 +594,7 @@ with st.sidebar:
 # ═══════════════════════════════════════════════════════════════════════
 # HERO HEADER
 # ═══════════════════════════════════════════════════════════════════════
-logo_html = f'<img src="data:image/png;base64,{logo_b64}" style="height: 3.2rem; vertical-align: middle; margin-right: 15px; filter: drop-shadow(0 4px 12px rgba(123,47,247,0.3));">' if logo_b64 else '🕵️'
+logo_html = f'<img src="data:image/png;base64,{logo_b64}" style="height: 4.5rem; vertical-align: middle; margin-right: 18px; filter: drop-shadow(0 4px 15px rgba(123,47,247,0.4));">' if logo_b64 else '🕵️'
 st.markdown(f"""
 <div class="hero-header">
     <h1>{logo_html} Data Lie Detector</h1>
