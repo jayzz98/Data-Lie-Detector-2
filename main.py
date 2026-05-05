@@ -32,24 +32,42 @@ async def get_landing():
 
 from fastapi.responses import RedirectResponse
 
+import httpx
+from fastapi.responses import StreamingResponse
+
 @app.get("/app")
-async def get_app(request: Request):
-    # Determine the public URL for the Streamlit engine
-    host = request.url.hostname or "localhost"
-    
-    if "REPL_SLUG" in os.environ:
-        slug = os.environ.get("REPL_SLUG")
-        owner = os.environ.get("REPL_OWNER", "user")
-        public_app_url = f"https://8502.{slug}.{owner}.replit.dev"
-    elif "trycloudflare.com" in host:
-        # Seamlessly redirect to the analysis engine tunnel
-        public_app_url = f"https://productions-translated-workshops-elliott.trycloudflare.com"
-    elif not host == "localhost":
-        public_app_url = f"https://{host}"
-    else:
-        public_app_url = f"http://{host}:8502"
-    
-    return RedirectResponse(url=public_app_url)
+async def proxy_streamlit_app(request: Request):
+    # Proxy the main Streamlit page
+    async with httpx.AsyncClient() as client:
+        # We reach the internal streamlit server on localhost:8502
+        resp = await client.get("http://localhost:8502/")
+        return HTMLResponse(content=resp.text)
+
+# We need to catch all Streamlit internal paths (_stcore, static, etc.)
+@app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "DELETE"])
+async def proxy_all(request: Request, path: str):
+    # Skip if it's our own routes or static landing files
+    if path == "" or path == "app" or os.path.exists(os.path.join(landing_dir, path)):
+        return None # Let the next route handle it
+        
+    async with httpx.AsyncClient() as client:
+        url = f"http://localhost:8502/{path}"
+        if request.query_params:
+            url += f"?{request.query_params}"
+            
+        # Forward the request to internal Streamlit
+        req = client.build_request(
+            method=request.method,
+            url=url,
+            headers=request.headers.raw,
+            content=await request.body()
+        )
+        resp = await client.send(req, stream=True)
+        return StreamingResponse(
+            resp.aiter_raw(),
+            status_code=resp.status_code,
+            headers=dict(resp.headers)
+        )
 
 # Serve the static files for the landing page
 app.mount("/", StaticFiles(directory=landing_dir, html=True), name="landing")
