@@ -441,23 +441,20 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 }
 .login-container {
     background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px;
-    padding: 1.5rem 2.5rem; width: 100%; max-width: 440px; text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px;
+    padding: 1rem 2rem; width: 100%; max-width: 400px; text-align: center;
     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); position: relative; z-index: 10;
 }
 .login-title {
-    color: white; font-size: 1.8rem; font-weight: 800; margin-bottom: 0.25rem;
+    color: white; font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;
     letter-spacing: -0.03em; line-height: 1;
 }
-.login-sub {
-    color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 1rem;
-    line-height: 1.3;
-}
+.login-sub { display: none; }
 .oauth-btn {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    width: 100%; padding: 0.75rem; border-radius: 12px; font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; margin-bottom: 0.75rem;
-    font-size: 0.95rem;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 0.6rem; border-radius: 10px; font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; margin-bottom: 0.5rem;
+    font-size: 0.9rem;
 }
 .oauth-google {
     background: white; color: #1f2937;
