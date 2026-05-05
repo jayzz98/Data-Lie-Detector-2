@@ -438,7 +438,7 @@ html, body, .stApp, [data-testid="stAppViewContainer"], .login-wrapper {
 * { scrollbar-width: none !important; -ms-overflow-style: none !important; }
 .main .block-container { padding-top: 0 !important; padding-bottom: 0 !important; }
 .login-wrapper {
-    display: flex; justify-content: center; align-items: center; min-height: 30vh;
+    display: flex; justify-content: center; align-items: center; min-height: 10vh;
     font-family: 'Inter', sans-serif; position: relative;
 }
 .login-container {
@@ -471,7 +471,7 @@ html, body, .stApp, [data-testid="stAppViewContainer"], .login-wrapper {
     background: rgba(255,255,255,0.08); transform: translateY(-2px); border-color: rgba(0,164,239,0.5);
 }
 .login-divider {
-    display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0;
+    display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0;
     color: rgba(255,255,255,0.2); font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
 }
 .login-divider::before, .login-divider::after {
