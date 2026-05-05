@@ -517,7 +517,7 @@ Continue with Microsoft
                 else:
                     st.error("Please enter a valid email address.")
         with c2:
-            if st.button("Skip Login (Dev Mode) 🔓", use_container_width=True):
+            if st.button("Continue as Guest", use_container_width=True):
                 user = login_user("guest@example.com")
                 st.session_state.user_email = user["email"]
                 st.rerun()
