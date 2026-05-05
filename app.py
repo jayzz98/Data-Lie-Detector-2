@@ -420,6 +420,15 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
     google_href = google_url if google_url else "?login=google"
     microsoft_href = microsoft_url if microsoft_url else "?login=microsoft"
 
+    # ── 3. Handle Email/Guest Login via URL ──
+    if "login_email" in st.query_params:
+        email = st.query_params["login_email"]
+        # Clear the param so it doesn't loop
+        st.query_params.clear()
+        user = login_user(email)
+        st.session_state.user_email = user["email"]
+        st.rerun()
+
     # ── 4. Full-Page Login UI ──
     home_url = os.environ.get("HOME_URL", "http://localhost:8000/")
     
