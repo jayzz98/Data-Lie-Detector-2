@@ -429,16 +429,14 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 [data-testid="stSidebar"] { display: none; }
 [data-testid="collapsedControl"] { display: none; }
 [data-testid="stHeader"] { display: none; }
+html, body, .stApp, [data-testid="stAppViewContainer"], .login-wrapper {
+    background: #06060f !important;
+    overflow: hidden !important;
+}
 .main .block-container { padding-top: 0 !important; }
 .login-wrapper {
     display: flex; justify-content: center; align-items: center; min-height: 40vh;
-    background: #06060f;
-    font-family: 'Inter', sans-serif; position: relative; overflow: hidden;
-}
-.login-wrapper::before {
-    content:''; position:absolute; width:100%; height:100%;
-    background: radial-gradient(circle at top, rgba(123,47,247,0.1), transparent 70%);
-    pointer-events:none;
+    font-family: 'Inter', sans-serif; position: relative;
 }
 .login-container {
     background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(24px);
