@@ -446,95 +446,66 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 }}
 .login-container {{
     max-width: 440px; width: 100%; position: relative; z-index: 2;
-    background: rgba(10,10,26,0.85); backdrop-filter: blur(24px);
-    border: 1px solid rgba(123,47,247,0.18);
-    border-radius: 24px; padding: 3rem 2.5rem; text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 100px rgba(123,47,247,0.06);
-}}
-.login-title {{ font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem; color: #f0f0f5; letter-spacing:-0.02em; }}
-.login-sub {{ font-size: 0.88rem; color: rgba(240,240,245,0.45); margin-bottom: 2rem; line-height:1.5; }}
-.oauth-btn {{
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    padding: 13px 20px; border-radius: 12px; text-decoration: none;
-    font-weight: 600; font-size: 0.9rem; font-family: 'Inter', sans-serif;
-    transition: all 0.25s cubic-bezier(0.4,0,0.2,1); cursor: pointer;
-}}
-.oauth-google {{
-    background: #ffffff; color: #3c4043; border: 1px solid #e0e0e0; margin-bottom: 12px;
-}}
-.oauth-google:hover {{ transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }}
-.oauth-microsoft {{
-    background: #1a1a2e; color: #e0e0e8; border: 1px solid rgba(255,255,255,0.12); margin-bottom: 8px;
-}}
-.oauth-microsoft:hover {{ transform: translateY(-2px); background: #222240; box-shadow: 0 8px 25px rgba(0,0,0,0.3); }}
-.login-divider {{
-    display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0;
-    color: rgba(255,255,255,0.2); font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
-}}
-.login-divider::before, .login-divider::after {{
-    content:''; flex:1; height:1px; background: rgba(255,255,255,0.08);
-}}
-</style>
-<div class="login-wrapper">
-<div class="login-container">
     home_url = os.environ.get("HOME_URL", "http://localhost:8000/")
-    st.markdown(f"""
+    st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-.login-wrapper {{
+[data-testid="stSidebar"] { display: none; }
+[data-testid="collapsedControl"] { display: none; }
+[data-testid="stHeader"] { display: none; }
+.login-wrapper {
     display: flex; justify-content: center; align-items: center; min-height: 100vh;
     background: radial-gradient(circle at top right, rgba(123,47,247,0.15), transparent 40%),
                 radial-gradient(circle at bottom left, rgba(0,242,255,0.1), transparent 40%),
                 #0a0a1a;
     font-family: 'Inter', sans-serif; position: relative; overflow: hidden;
-}}
-.login-container {{
+}
+.login-container {
     background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 32px;
     padding: 3.5rem; width: 100%; max-width: 480px; text-align: center;
     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); position: relative; z-index: 10;
-}}
-.login-title {{
+}
+.login-title {
     color: white; font-size: 2.75rem; font-weight: 800; margin-bottom: 1rem;
     letter-spacing: -0.03em; line-height: 1;
-}}
-.login-sub {{
+}
+.login-sub {
     color: rgba(255,255,255,0.5); font-size: 1.1rem; margin-bottom: 2.5rem;
     line-height: 1.6;
-}}
-.oauth-btn {{
+}
+.oauth-btn {
     display: flex; align-items: center; justify-content: center; gap: 12px;
     width: 100%; padding: 1rem; border-radius: 16px; font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; margin-bottom: 1rem;
     font-size: 1.05rem;
-}}
-.oauth-google {{
+}
+.oauth-google {
     background: white; color: #1f2937;
-}}
-.oauth-google:hover {{
+}
+.oauth-google:hover {
     background: #f9fafb; transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(255,255,255,0.2);
-}}
-.oauth-microsoft {{
+}
+.oauth-microsoft {
     background: rgba(255,255,255,0.05); color: #00a4ef; border: 1px solid rgba(255,255,255,0.1);
-}}
-.oauth-microsoft:hover {{
+}
+.oauth-microsoft:hover {
     background: rgba(255,255,255,0.08); transform: translateY(-2px); border-color: rgba(0,164,239,0.5);
-}}
-.login-divider {{
+}
+.login-divider {
     display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0;
     color: rgba(255,255,255,0.2); font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
-}}
-.login-divider::before, .login-divider::after {{
+}
+.login-divider::before, .login-divider::after {
     content:''; flex:1; height:1px; background: rgba(255,255,255,0.08);
-}}
+}
 </style>
 <div class="login-wrapper">
 <div class="login-container">
-<a href="{home_url}" target="_top" style="position:absolute; top:20px; left:20px; color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.85rem; font-weight:600; transition:color 0.2s;">← Back to Home</a>
+<a href=\"""" + home_url + """\" target="_top" style="position:absolute; top:20px; left:20px; color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.85rem; font-weight:600; transition:color 0.2s;">← Back to Home</a>
 <img src="data:image/png;base64,{logo_b64}" style="height: 4.5rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 12px rgba(123,47,247,0.3)); border-radius: 12px;">
 <div class="login-title">Welcome Back</div>
 <div class="login-sub">Sign in or create an account to start your free trial.<br>No credit card required.</div>
-
 <a href="{google_href}" target="_self" class="oauth-btn oauth-google">
 <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
 Continue with Google
