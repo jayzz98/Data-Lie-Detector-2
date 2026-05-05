@@ -473,11 +473,15 @@ div[data-testid="stVerticalBlock"] > div { margin-top: -5px !important; }
     background: rgba(255,255,255,0.08); transform: translateY(-2px); border-color: rgba(0,164,239,0.5);
 }
 .login-divider {
-    display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0;
+    display: flex; align-items: center; gap: 1rem; margin: -5rem 0 0.5rem 0 !important;
     color: rgba(255,255,255,0.2); font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
+    position: relative; z-index: 20;
 }
 .login-divider::before, .login-divider::after {
     content:''; flex:1; height:1px; background: rgba(255,255,255,0.08);
+}
+[data-testid="stVerticalBlock"] > div:nth-child(2) {
+    margin-top: -6rem !important;
 }
 </style>
 """
