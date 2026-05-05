@@ -30,46 +30,26 @@ async def get_landing():
     with open(os.path.join(landing_dir, "index.html"), "r", encoding="utf-8") as f:
         return f.read()
 
+from fastapi.responses import RedirectResponse
+
 @app.get("/app")
 async def get_app(request: Request):
-    # Determine the public URL for the Streamlit iframe
-    # In production (Render), everything must go through the main domain
+    # Determine the public URL for the Streamlit engine
     host = request.url.hostname or "localhost"
     
     if "REPL_SLUG" in os.environ:
         slug = os.environ.get("REPL_SLUG")
         owner = os.environ.get("REPL_OWNER", "user")
         public_app_url = f"https://8502.{slug}.{owner}.replit.dev"
-    elif "loca.lt" in host:
-        # For LocalTunnel, we use the newly assigned active tunnel
-        public_app_url = f"https://hungry-octopus-92.loca.lt"
+    elif "trycloudflare.com" in host:
+        # Seamlessly redirect to the analysis engine tunnel
+        public_app_url = f"https://encouraging-pac-becoming-benz.trycloudflare.com"
     elif not host == "localhost":
-        # On Render, we use a public proxy or simply the host with the correct port
-        # Since Render only exposes one port, we must ensure the iframe can see the background process
         public_app_url = f"https://{host}"
     else:
-        # Local development fallback
         public_app_url = f"http://{host}:8502"
     
-    html_content = f"""
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Data Lie Detector - Dashboard</title>
-        <link rel="icon" href="/favicon.ico">
-        <style>
-            body, html {{ margin: 0; padding: 0; height: 100%; overflow: hidden; background: #0a0a1a; }}
-            iframe {{ width: 100%; height: 100%; border: none; }}
-        </style>
-    </head>
-    <body>
-        <iframe src="{public_app_url}" allow="geolocation; microphone; camera; clipboard-read; clipboard-write;"></iframe>
-    </body>
-    </html>
-    """
-    return HTMLResponse(content=html_content)
+    return RedirectResponse(url=public_app_url)
 
 # Serve the static files for the landing page
 app.mount("/", StaticFiles(directory=landing_dir, html=True), name="landing")
