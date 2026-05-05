@@ -477,7 +477,60 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 </style>
 <div class="login-wrapper">
 <div class="login-container">
-<a href="/" target="_top" onclick="window.top.location.href='/'; return false;" style="position:absolute; top:20px; left:20px; color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.85rem; font-weight:600; transition:color 0.2s;">← Back to Home</a>
+    home_url = os.environ.get("HOME_URL", "http://localhost:8000/")
+    st.markdown(f"""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+.login-wrapper {{
+    display: flex; justify-content: center; align-items: center; min-height: 100vh;
+    background: radial-gradient(circle at top right, rgba(123,47,247,0.15), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(0,242,255,0.1), transparent 40%),
+                #0a0a1a;
+    font-family: 'Inter', sans-serif; position: relative; overflow: hidden;
+}}
+.login-container {{
+    background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 32px;
+    padding: 3.5rem; width: 100%; max-width: 480px; text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); position: relative; z-index: 10;
+}}
+.login-title {{
+    color: white; font-size: 2.75rem; font-weight: 800; margin-bottom: 1rem;
+    letter-spacing: -0.03em; line-height: 1;
+}}
+.login-sub {{
+    color: rgba(255,255,255,0.5); font-size: 1.1rem; margin-bottom: 2.5rem;
+    line-height: 1.6;
+}}
+.oauth-btn {{
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    width: 100%; padding: 1rem; border-radius: 16px; font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; margin-bottom: 1rem;
+    font-size: 1.05rem;
+}}
+.oauth-google {{
+    background: white; color: #1f2937;
+}}
+.oauth-google:hover {{
+    background: #f9fafb; transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(255,255,255,0.2);
+}}
+.oauth-microsoft {{
+    background: rgba(255,255,255,0.05); color: #00a4ef; border: 1px solid rgba(255,255,255,0.1);
+}}
+.oauth-microsoft:hover {{
+    background: rgba(255,255,255,0.08); transform: translateY(-2px); border-color: rgba(0,164,239,0.5);
+}}
+.login-divider {{
+    display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0;
+    color: rgba(255,255,255,0.2); font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
+}}
+.login-divider::before, .login-divider::after {{
+    content:''; flex:1; height:1px; background: rgba(255,255,255,0.08);
+}}
+</style>
+<div class="login-wrapper">
+<div class="login-container">
+<a href="{home_url}" target="_top" style="position:absolute; top:20px; left:20px; color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.85rem; font-weight:600; transition:color 0.2s;">← Back to Home</a>
 <img src="data:image/png;base64,{logo_b64}" style="height: 4.5rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 12px rgba(123,47,247,0.3)); border-radius: 12px;">
 <div class="login-title">Welcome Back</div>
 <div class="login-sub">Sign in or create an account to start your free trial.<br>No credit card required.</div>
