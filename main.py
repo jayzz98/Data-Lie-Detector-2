@@ -16,12 +16,16 @@ landing_dir = os.path.join(project_root, "landing")
 @app.on_event("startup")
 async def startup_event():
     print("Starting Streamlit background engine...")
-    # We run Streamlit on 8502, and Replit will automatically make it public
+    # Render provides the port in the PORT environment variable
+    port = os.environ.get("PORT", "8000")
+    # We will run Streamlit on a separate internal port
     subprocess.Popen(
         [sys.executable, "-m", "streamlit", "run", "app.py", 
          "--server.port", "8502", 
          "--server.address", "0.0.0.0",
-         "--server.headless", "true"],
+         "--server.headless", "true",
+         "--server.enableXsrfProtection", "false",
+         "--server.enableCORS", "false"],
         cwd=project_root
     )
 
@@ -30,32 +34,30 @@ async def get_landing():
     with open(os.path.join(landing_dir, "index.html"), "r", encoding="utf-8") as f:
         return f.read()
 
-from fastapi.responses import RedirectResponse
-
-import httpx
-from fastapi.responses import StreamingResponse
-
 @app.get("/app")
-async def proxy_streamlit_app(request: Request):
-    # Proxy the main Streamlit page
-    async with httpx.AsyncClient() as client:
-        # We reach the internal streamlit server on localhost:8502
-        resp = await client.get("http://localhost:8502/")
-        return HTMLResponse(content=resp.text)
+async def get_app(request: Request):
+    # On Render, we'll use a direct internal proxy for the app
+    # This ensures the user stays on the same domain
+    return HTMLResponse(content="""
+        <style>body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }</style>
+        <iframe src="/_st" style="border:none; width:100%; height:100%;"></iframe>
+    """)
 
-# We need to catch all Streamlit internal paths (_stcore, static, etc.)
 @app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "DELETE"])
-async def proxy_all(request: Request, path: str):
-    # Skip if it's our own routes or static landing files
+async def catch_all_proxy(request: Request, path: str):
+    # If it's a known static file or route, let it pass
     if path == "" or path == "app" or os.path.exists(os.path.join(landing_dir, path)):
-        return None # Let the next route handle it
-        
+        # Re-serve landing if root
+        if path == "":
+             with open(os.path.join(landing_dir, "index.html"), "r", encoding="utf-8") as f:
+                return HTMLResponse(content=f.read())
+        return None 
+
+    # Otherwise, proxy to Streamlit
     async with httpx.AsyncClient() as client:
         url = f"http://localhost:8502/{path}"
         if request.query_params:
             url += f"?{request.query_params}"
-            
-        # Forward the request to internal Streamlit
         req = client.build_request(
             method=request.method,
             url=url,
@@ -77,4 +79,3 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     print(f"Starting Data Lie Detector Gateway on port {port}")
     uvicorn.run(app, host="0.0.0.0", port=port)
-
