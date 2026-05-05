@@ -57,7 +57,7 @@ body {
     top: 0;
     width: 100%;
     z-index: 100;
-    padding: 1rem 0;
+    padding: 0.2rem 0;
     transition: all 0.3s ease;
 }
 .navbar.scrolled {
@@ -151,7 +151,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 8rem 2rem 4rem;
+    padding: 4rem 2rem 2rem;
     position: relative;
     overflow: hidden;
 }
@@ -239,7 +239,7 @@ body {
 
 /* ── Hero Visual (Dashboard Mockup) ── */
 .hero-visual {
-    margin-top: 3rem;
+    margin-top: 1.5rem;
     perspective: 1000px;
     animation: fadeInUp 0.8s ease 0.5s both;
     position: relative;
@@ -325,7 +325,7 @@ body {
 
 /* ── Features ── */
 .features {
-    padding: 8rem 0;
+    padding: 4rem 0;
     text-align: center;
 }
 .features h2, .how-it-works h2, .pricing h2, .cta h2 {
