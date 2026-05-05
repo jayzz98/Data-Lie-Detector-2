@@ -10,3 +10,6 @@ uvicorn
 python-multipart
 python-dotenv
 httpx
+authlib
+itsdangerous
+google-auth
