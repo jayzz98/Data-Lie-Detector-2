@@ -1047,10 +1047,10 @@ if files:
 else:
     # ── EMPTY STATE ──
     st.markdown("""
-    <div style="text-align:center; padding:5rem 2rem; position:relative;">
+    <div style="text-align:center; padding:1rem 2rem; position:relative;">
         <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:300px; height:300px; background:radial-gradient(circle, rgba(123,47,247,0.06), transparent 70%); pointer-events:none;"></div>
-        <div style="font-size:4rem; margin-bottom:1rem; filter:drop-shadow(0 4px 12px rgba(123,47,247,0.2)); position:relative;">📁</div>
-        <div style="font-size:1.3rem; font-weight:800; color:#e0e0f0; margin-bottom:0.6rem; position:relative;">Drop your CSV file above</div>
-        <div style="font-size:0.88rem; color:rgba(240,240,245,0.35); max-width:400px; margin:0 auto; line-height:1.6; position:relative;">Your data stays 100% local — nothing is sent to any server unless you explicitly use AI Insight.</div>
+        <div style="font-size:3rem; margin-bottom:0.4rem; filter:drop-shadow(0 4px 12px rgba(123,47,247,0.2)); position:relative;">📁</div>
+        <div style="font-size:1.2rem; font-weight:800; color:#e0e0f0; margin-bottom:0.3rem; position:relative;">Drop your CSV file above</div>
+        <div style="font-size:0.85rem; color:rgba(240,240,245,0.3); max-width:400px; margin:0 auto; line-height:1.4; position:relative;">Your data stays 100% local — nothing is sent to any server unless you explicitly use AI Insight.</div>
     </div>
     """, unsafe_allow_html=True)
