@@ -477,7 +477,7 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 </style>
 <div class="login-wrapper">
 <div class="login-container">
-<a href="/" target="_parent" style="position:absolute; top:20px; left:20px; color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.85rem; font-weight:600; transition:color 0.2s;">← Back to Home</a>
+<a href="/" target="_top" onclick="window.top.location.href='/'; return false;" style="position:absolute; top:20px; left:20px; color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.85rem; font-weight:600; transition:color 0.2s;">← Back to Home</a>
 <img src="data:image/png;base64,{logo_b64}" style="height: 4.5rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 12px rgba(123,47,247,0.3)); border-radius: 12px;">
 <div class="login-title">Welcome Back</div>
 <div class="login-sub">Sign in or create an account to start your free trial.<br>No credit card required.</div>
