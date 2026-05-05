@@ -432,10 +432,13 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 html, body, .stApp, [data-testid="stAppViewContainer"], .login-wrapper {
     background: #06060f !important;
     overflow: hidden !important;
+    height: 100vh !important;
 }
-.main .block-container { padding-top: 0 !important; }
+::-webkit-scrollbar { display: none !important; }
+* { scrollbar-width: none !important; -ms-overflow-style: none !important; }
+.main .block-container { padding-top: 0 !important; padding-bottom: 0 !important; }
 .login-wrapper {
-    display: flex; justify-content: center; align-items: center; min-height: 40vh;
+    display: flex; justify-content: center; align-items: center; min-height: 30vh;
     font-family: 'Inter', sans-serif; position: relative;
 }
 .login-container {
