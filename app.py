@@ -421,31 +421,9 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
     microsoft_href = microsoft_url if microsoft_url else "?login=microsoft"
 
     # ── 4. Full-Page Login UI ──
-    st.markdown(f"""
-<style>
-[data-testid="stSidebar"] {{ display: none; }}
-[data-testid="collapsedControl"] {{ display: none; }}
-[data-testid="stHeader"] {{ display: none; }}
-.login-wrapper {{
-    min-height: 80vh; display: flex; align-items: center; justify-content: center;
-    position: relative;
-}}
-.login-wrapper::before {{
-    content:''; position:absolute; width:500px; height:500px;
-    background: radial-gradient(circle, rgba(123,47,247,0.12), transparent 70%);
-    top: -10%; left: 30%; pointer-events:none; animation: loginGlow 6s ease-in-out infinite;
-}}
-.login-wrapper::after {{
-    content:''; position:absolute; width:350px; height:350px;
-    background: radial-gradient(circle, rgba(0,210,255,0.06), transparent 70%);
-    bottom: 5%; right: 25%; pointer-events:none; animation: loginGlow 8s ease-in-out infinite reverse;
-}}
-@keyframes loginGlow {{
-    0%,100% {{ opacity:0.5; transform:scale(1); }}
-    50% {{ opacity:1; transform:scale(1.15); }}
-}}
     home_url = os.environ.get("HOME_URL", "http://localhost:8000/")
-    st.markdown("""
+    
+    css_code = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 [data-testid="stSidebar"] { display: none; }
@@ -453,10 +431,13 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 [data-testid="stHeader"] { display: none; }
 .login-wrapper {
     display: flex; justify-content: center; align-items: center; min-height: 100vh;
-    background: radial-gradient(circle at top right, rgba(123,47,247,0.15), transparent 40%),
-                radial-gradient(circle at bottom left, rgba(0,242,255,0.1), transparent 40%),
-                #0a0a1a;
+    background: #06060f;
     font-family: 'Inter', sans-serif; position: relative; overflow: hidden;
+}
+.login-wrapper::before {
+    content:''; position:absolute; width:100%; height:100%;
+    background: radial-gradient(circle at top, rgba(123,47,247,0.1), transparent 70%);
+    pointer-events:none;
 }
 .login-container {
     background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(24px);
@@ -498,6 +479,9 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
     content:''; flex:1; height:1px; background: rgba(255,255,255,0.08);
 }
 </style>
+"""
+    
+    login_html = """
 <div class="login-wrapper">
 <div class="login-container">
 <a href=\"""" + home_url + """\" target="_top" style="position:absolute; top:20px; left:20px; color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.85rem; font-weight:600; transition:color 0.2s;">← Back to Home</a>
@@ -514,7 +498,9 @@ Continue with Microsoft
 </a>
 </div>
 </div>
-""", unsafe_allow_html=True)
+"""
+    
+    st.markdown(css_code + login_html, unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
