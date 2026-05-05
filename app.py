@@ -420,6 +420,14 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
     google_href = google_url if google_url else "?login=google"
     microsoft_href = microsoft_url if microsoft_url else "?login=microsoft"
 
+    # ── 3. Handle Email Bypass ──
+    if "login_email" in st.query_params:
+        email = st.query_params["login_email"]
+        st.query_params.clear()
+        user = login_user(email)
+        st.session_state.user_email = user["email"]
+        st.rerun()
+
     # ── 4. Full-Page Login UI ──
     home_url = os.environ.get("HOME_URL", "http://localhost:8000/")
     
@@ -429,28 +437,26 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 [data-testid="stSidebar"] { display: none; }
 [data-testid="collapsedControl"] { display: none; }
 [data-testid="stHeader"] { display: none; }
-html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stVerticalBlock"], .login-wrapper {
+html, body, .stApp, [data-testid="stAppViewContainer"] {
     background: #06060f !important;
     overflow: hidden !important;
     height: 100vh !important;
-    padding-top: 0 !important;
 }
 ::-webkit-scrollbar { display: none !important; }
-* { scrollbar-width: none !important; -ms-overflow-style: none !important; }
-.main .block-container { padding: 0 !important; margin-top: -2rem !important; }
+.main .block-container { padding: 0 !important; }
 
 .login-wrapper {
     display: flex; justify-content: center; align-items: flex-start;
-    font-family: 'Inter', sans-serif; padding-top: 0;
+    font-family: 'Inter', sans-serif; padding-top: 2rem; height: 100vh;
 }
 .login-container {
     background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px;
-    padding: 1rem 1.5rem; width: 100%; max-width: 380px; text-align: center;
+    padding: 1.5rem; width: 100%; max-width: 380px; text-align: center;
     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
 }
 .login-title {
-    color: white; font-size: 1.1rem; font-weight: 800; margin-bottom: 0.3rem;
+    color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 0.8rem;
     letter-spacing: -0.03em;
 }
 .oauth-btn {
@@ -461,55 +467,54 @@ html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stVertical
 }
 .oauth-google { background: white; color: #1f2937; }
 .oauth-microsoft { background: rgba(255,255,255,0.05); color: #00a4ef; border: 1px solid rgba(255,255,255,0.1); }
-.login-divider {
-    display: flex; align-items: center; gap: 1rem; margin: 0.8rem 0;
-    color: rgba(255,255,255,0.2); font-size: 0.7rem; font-weight: 600; letter-spacing: 1px;
+.divider { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.2); font-size: 0.7rem; margin: 1rem 0; font-weight: 700; }
+.divider::before, .divider::after { content:''; flex:1; height:1px; background: rgba(255,255,255,0.1); }
+
+.email-box {
+    background: rgba(13,13,26,0.8); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 0.6rem; width: 100%; color: white;
+    font-size: 0.9rem; margin-bottom: 0.8rem; outline: none; box-sizing: border-box;
 }
-.login-divider::before, .login-divider::after { content:''; flex:1; height:1px; background: rgba(255,255,255,0.1); }
+.email-btn {
+    background: #7b2ff7; color: white; border: none; border-radius: 10px;
+    padding: 0.7rem; width: 100%; font-weight: 700; cursor: pointer; font-size: 0.9rem;
+}
 </style>
 """
     
-    login_html = f"""
+    login_html = f\"\"\"
 <div class="login-wrapper">
 <div class="login-container">
 <a href="{home_url}" target="_top" style="position:absolute; top:15px; left:15px; color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.75rem; font-weight:600;">← Home</a>
-<img src="data:image/png;base64,{logo_b64}" style="height: 1.5rem; margin-bottom: 0.2rem; border-radius: 6px;">
+<img src="data:image/png;base64,{logo_b64}" style="height: 1.8rem; margin-bottom: 0.4rem; border-radius: 8px;">
 <div class="login-title">Welcome Back</div>
+
 <a href="{get_google_login_url()}" target="_self" class="oauth-btn oauth-google">
 <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
 Continue with Google
 </a>
+
 <a href="{get_microsoft_login_url()}" target="_self" class="oauth-btn oauth-microsoft">
 <svg width="18" height="18" viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg>
 Continue with Microsoft
 </a>
-<div class="login-divider">OR</div>
+
+<div class="divider">OR</div>
+
+<form action="/" method="get">
+<input type="email" name="login_email" placeholder="name@company.com" class="email-box" required>
+<button type="submit" class="email-btn">Continue with Email →</button>
+</form>
+
+<div style="margin-top:0.8rem;">
+<a href="?login_email=guest@example.com" target="_self" style="color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.8rem; font-weight:600;">Continue as Guest</a>
+</div>
+
 </div>
 </div>
-"""
+\"\"\"
     
     st.markdown(css_code + login_html, unsafe_allow_html=True)
-
-    # Place Email logic immediately after the main container using negative margin for tightness
-    st.markdown("<div style='margin-top: -16.5rem;'></div>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        email_input = st.text_input("Email Address", placeholder="name@company.com", label_visibility="collapsed")
-        c1, c2 = st.columns([1, 1])
-        with c1:
-            if st.button("Continue with Email →", type="primary", use_container_width=True):
-                if "@" in email_input:
-                    user = login_user(email_input)
-                    st.session_state.user_email = user["email"]
-                    st.rerun()
-                else:
-                    st.error("Please enter a valid email address.")
-        with c2:
-            if st.button("Continue as Guest", use_container_width=True):
-                user = login_user("guest@example.com")
-                st.session_state.user_email = user["email"]
-                st.rerun()
-
     st.stop()
 
 # ═══════════════════════════════════════════════════════════════════════
