@@ -594,11 +594,10 @@ with st.sidebar:
 # ═══════════════════════════════════════════════════════════════════════
 # HERO HEADER
 # ═══════════════════════════════════════════════════════════════════════
-logo_html = f'<img src="data:image/png;base64,{logo_b64}" style="height: 3.5rem; margin-bottom: 0.8rem; filter: drop-shadow(0 4px 12px rgba(123,47,247,0.3));">' if logo_b64 else '🕵️'
+logo_html = f'<img src="data:image/png;base64,{logo_b64}" style="height: 3.2rem; vertical-align: middle; margin-right: 15px; filter: drop-shadow(0 4px 12px rgba(123,47,247,0.3));">' if logo_b64 else '🕵️'
 st.markdown(f"""
 <div class="hero-header">
-    <div style="margin-bottom: 0.5rem;">{logo_html}</div>
-    <h1>Data Lie Detector</h1>
+    <h1>{logo_html} Data Lie Detector</h1>
     <p>Upload data → Detect issues → Score trust → Make safe decisions</p>
 </div>
 """, unsafe_allow_html=True)
