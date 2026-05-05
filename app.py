@@ -1,8 +1,29 @@
 # -*- coding: utf-8 -*-
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import base64
 import os
+
+# Routing Logic (MUST BE BEFORE ANY UI ELEMENTS)
+query_params = st.query_params
+show_app = query_params.get("app") == "true"
+
+if not show_app:
+    # Serve the Landing Page
+    landing_path = os.path.join(os.path.dirname(__file__), "landing", "index.html")
+    with open(landing_path, "r", encoding="utf-8") as f:
+        html_content = f.read()
+    
+    # In-place fix for links to point to the app natively
+    html_content = html_content.replace('href="/app"', 'href="/?app=true"')
+    html_content = html_content.replace('href="/app?plan=', 'href="/?app=true&plan=')
+    
+    # Hide Streamlit elements for landing page
+    st.markdown("<style>#MainMenu {visibility: hidden;} footer {visibility: hidden;} header {visibility: hidden;}</style>", unsafe_allow_html=True)
+    
+    components.html(html_content, height=3500, scrolling=True)
+    st.stop()
 
 def get_base64_image(image_path):
     if os.path.exists(image_path):
@@ -38,7 +59,7 @@ st.set_page_config(
     page_title="Data Lie Detector",
     page_icon="assets/logo.png",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 
@@ -477,7 +498,7 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 </style>
 <div class="login-wrapper">
 <div class="login-container">
-<a href="/" target="_parent" style="position:absolute; top:20px; left:20px; color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.85rem; font-weight:600; transition:color 0.2s;">← Back to Home</a>
+<a href="/" target="_self" style="position:absolute; top:20px; left:20px; color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.85rem; font-weight:600; transition:color 0.2s;">← Back to Home</a>
 <img src="data:image/png;base64,{logo_b64}" style="height: 4.5rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 12px rgba(123,47,247,0.3)); border-radius: 12px;">
 <div class="login-title">Welcome Back</div>
 <div class="login-sub">Sign in or create an account to start your free trial.<br>No credit card required.</div>
