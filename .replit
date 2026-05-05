@@ -1,0 +1,10 @@
+run = "python main.py"
+entrypoint = "main.py"
+
+[languages.python]
+python_path = "python3"
+
+[deployment]
+run = ["python", "main.py"]
+deployment_type = "autoscale"
+

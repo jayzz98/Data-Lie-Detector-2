@@ -1,0 +1,12 @@
+streamlit
+pandas
+numpy
+scipy
+chardet
+openai
+reportlab
+fastapi
+uvicorn
+python-multipart
+python-dotenv
+httpx

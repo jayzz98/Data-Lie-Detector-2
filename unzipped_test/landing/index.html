@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Lie Detector — Decision Safety AI</title>
+    <meta name="description" content="Upload data. Detect issues. Score trust. Make safe decisions. The AI-powered data quality engine that tells you if your data is lying.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+    <!-- Premium Global SVG Definitions -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff6bcb" />
+                <stop offset="100%" stop-color="#7b2ff7" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- ═══ NAVBAR ═══ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo"><img src="logo.png" alt="Logo" style="height: 1.2em; vertical-align: middle;"> <span>Data Lie Detector</span></a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="/app" class="nav-cta">Try Free →</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-glow-2"></div>
+        <div class="hero-content">
+            <div class="hero-badge">🔥 Decision Safety AI</div>
+            <h1>Is Your Data <span class="gradient-text">Lying</span> to You?</h1>
+            <p class="hero-sub">Upload any dataset. Get instant trust scores, anomaly detection, suspicious pattern analysis, and AI-powered risk assessment — in seconds.</p>
+            <div class="hero-actions">
+                <a href="/app" class="btn btn-primary">
+                    <span>Analyze Your Data Free</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#how-it-works" class="btn btn-ghost">See How It Works</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Analysis Modules</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat"><span class="stat-num">3-Tier</span><span class="stat-label">Alert System</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat"><span class="stat-num">AI</span><span class="stat-label">Powered Insights</span></div>
+            </div>
+        </div>
+
+        <!-- Floating dashboard mockup -->
+        <div class="hero-visual">
+            <div class="dashboard-card">
+                <div class="dash-header">
+                    <div class="dash-dots"><span></span><span></span><span></span></div>
+                    <span class="dash-title">analysis_report.csv</span>
+                </div>
+                <div class="dash-body">
+                    <div class="dash-metric">
+                        <span class="dash-metric-label">TRUST SCORE</span>
+                        <span class="dash-metric-value score-caution">78.4</span>
+                    </div>
+                    <div class="dash-metric">
+                        <span class="dash-metric-label">DECISION RISK</span>
+                        <span class="dash-risk-badge">Medium Risk ⚠️</span>
+                    </div>
+                    <div class="dash-verdict">⚠️ Safe for exploratory analysis, but not for high-stakes decisions.</div>
+                    <div class="dash-alerts">
+                        <div class="dash-alert critical"><span class="sev">CRITICAL</span> 'Cabin' is 77% missing</div>
+                        <div class="dash-alert moderate"><span class="sev">MODERATE</span> Elevated anomaly count (20)</div>
+                        <div class="dash-alert minor"><span class="sev">MINOR</span> 2 duplicate rows found</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FEATURES ═══ -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-badge">Capabilities</div>
+            <h2>Everything You Need to <span class="gradient-text">Trust Your Data</span></h2>
+            <p class="section-sub">Not just another data quality tool. A complete decision safety system.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crosshair"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg></div>
+                    <h3>Trust Scoring</h3>
+                    <p>Intelligent scoring with weighted penalties for missing data, anomalies, and duplicates. Dataset + column-level granularity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></div>
+                    <h3>Lie Detection</h3>
+                    <p>Detects manipulation patterns: repetitive values, perfect increments, and synthetic data signatures others miss.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+                    <h3>Anomaly Detection</h3>
+                    <p>Smart Z-score analysis that skips discrete columns to eliminate false positives. Time-series spike detection included.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></div>
+                    <h3>AI Explanations</h3>
+                    <p>GPT-powered insights that explain WHY your data has issues and WHAT to do about it. Business-friendly language.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-ring"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/><path d="M4 2C2.8 3.7 2 5.7 2 8"/><path d="M22 8c0-2.3-.8-4.3-2-6"/></svg></div>
+                    <h3>Severity Alerts</h3>
+                    <p>3-tier alert system (Critical / Moderate / Minor) that surfaces the most dangerous issues first.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-code"><path d="m13 13.5 2-2.5-2-2.5"/><path d="m21 21-4.3-4.3"/><path d="M9 8.5 7 11l2 2.5"/><circle cx="11" cy="11" r="8"/></svg></div>
+                    <h3>Root Cause Analysis</h3>
+                    <p>Goes beyond "problem exists" to explain WHY anomalies happen — extreme values, distribution shifts, spike sources.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-triangle-alert"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+                    <h3>Decision Risk</h3>
+                    <p>One-liner verdict: "Safe for exploratory analysis, not for high-stakes decisions." Founders and analysts love this.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#icon-grad)" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg></div>
+                    <h3>PDF Reports</h3>
+                    <p>Download professional quality reports with trust scores, anomaly tables, and risk assessments. Share with stakeholders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ HOW IT WORKS ═══ -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-badge">Simple Process</div>
+            <h2>From Upload to <span class="gradient-text">Decision</span> in Seconds</h2>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div class="step-content">
+                        <h3>Upload</h3>
+                        <p>Drop your CSV file. Multi-file comparison supported.</p>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <div class="step-content">
+                        <h3>Analyze</h3>
+                        <p>15+ modules scan for quality issues, anomalies, and suspicious patterns.</p>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <div class="step-content">
+                        <h3>Score</h3>
+                        <p>Get a trust score, severity alerts, and a decision safety verdict.</p>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-num">04</div>
+                    <div class="step-content">
+                        <h3>Decide</h3>
+                        <p>Know exactly what's safe to act on — and what isn't.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PRICING ═══ -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-badge">Pricing</div>
+            <h2>Start Free. <span class="gradient-text">Scale When Ready.</span></h2>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-tier">Free</div>
+                    <div class="price-amount">Free<span> Trial</span></div>
+                    <ul class="price-features">
+                        <li>✅ 2 dataset limit</li>
+                        <li>✅ Trust scoring</li>
+                        <li>✅ Anomaly detection</li>
+                        <li>✅ Basic alerts</li>
+                        <li>❌ AI insights</li>
+                        <li>❌ PDF reports</li>
+                    </ul>
+                    <a href="/app" class="btn btn-ghost">Get Started</a>
+                </div>
+                <div class="price-card featured">
+                    <div class="price-popular">Most Popular</div>
+                    <div class="price-tier">1 Month</div>
+                    <div class="price-amount">$5<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li>✅ Everything in Free</li>
+                        <li>✅ Multi-file comparison</li>
+                        <li>✅ AI-powered insights</li>
+                        <li>✅ PDF report export</li>
+                        <li>✅ Root cause analysis</li>
+                        <li>✅ Auto-fix suggestions</li>
+                    </ul>
+                    <a href="/app?plan=monthly" class="btn btn-primary">Buy Now</a>
+                </div>
+                <div class="price-card">
+                    <div class="price-tier">6 Months</div>
+                    <div class="price-amount">$29<span>/6mo</span></div>
+                    <ul class="price-features">
+                        <li>✅ Everything in 1 Month</li>
+                        <li>✅ Priority Support</li>
+                        <li>✅ API access</li>
+                        <li>✅ Real-time monitoring</li>
+                        <li>✅ Team dashboards</li>
+                    </ul>
+                    <a href="/app?plan=semi_annual" class="btn btn-ghost">Buy Now</a>
+                </div>
+                <div class="price-card">
+                    <div class="price-tier">1 Year</div>
+                    <div class="price-amount">$49<span>/yr</span></div>
+                    <ul class="price-features">
+                        <li>✅ Everything in 6 Months</li>
+                        <li>✅ Custom integrations</li>
+                        <li>✅ Dedicated account manager</li>
+                        <li>✅ Best value ($4.08/mo)</li>
+                        <li>✅ Early access to features</li>
+                    </ul>
+                    <a href="/app?plan=yearly" class="btn btn-ghost">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>Stop Guessing. Start <span class="gradient-text">Knowing.</span></h2>
+            <p>Your data has a story. Make sure it's not fiction.</p>
+            <a href="/app" class="btn btn-primary btn-lg">Analyze Your Data Now →</a>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="nav-logo"><img src="logo.png" alt="Logo" style="height: 1.2em; vertical-align: middle;"> <span>DataLieDetector</span></span>
+                    <p>Decision Safety AI for data-driven teams.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#how-it-works">How It Works</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Data Lie Detector. Built with 🔥</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        function scrollToDemo() {
+            document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card, .step, .price-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
