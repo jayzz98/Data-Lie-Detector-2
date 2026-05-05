@@ -442,16 +442,16 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 .login-container {
     background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 32px;
-    padding: 3.5rem; width: 100%; max-width: 480px; text-align: center;
+    padding: 2rem 3.5rem; width: 100%; max-width: 480px; text-align: center;
     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); position: relative; z-index: 10;
 }
 .login-title {
-    color: white; font-size: 2.75rem; font-weight: 800; margin-bottom: 1rem;
+    color: white; font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem;
     letter-spacing: -0.03em; line-height: 1;
 }
 .login-sub {
-    color: rgba(255,255,255,0.5); font-size: 1.1rem; margin-bottom: 2.5rem;
-    line-height: 1.6;
+    color: rgba(255,255,255,0.5); font-size: 1rem; margin-bottom: 1.5rem;
+    line-height: 1.4;
 }
 .oauth-btn {
     display: flex; align-items: center; justify-content: center; gap: 12px;
