@@ -62,8 +62,8 @@ st.markdown("""
     /* ══ HERO HEADER ══ */
     .hero-header {
         background: linear-gradient(135deg, #0a0a1a 0%, #1a1040 40%, #0d0d2a 100%);
-        border-radius: 20px; padding: 1.2rem 2rem; margin-bottom: 1rem; text-align: center;
-        border: 1px solid rgba(123,47,247,0.15);
+        border-radius: 20px; padding: 1.2rem 2rem; margin-bottom: 0.8rem; text-align: center;
+        border: 1px solid rgba(123,47,247,0.15); margin-top: -2.5rem !important;
         box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
         position: relative; overflow: hidden;
     }
@@ -602,8 +602,8 @@ st.markdown(f"""
 has_access, reason, trial_status = check_access(st.session_state.user_email)
 
 st.markdown(f"""
-<div style="text-align:center; margin-bottom:1.5rem;">
-    <span style="background:rgba(123,47,247,0.1); border:1px solid rgba(123,47,247,0.2); color:rgba(123,47,247,0.7); padding:0.3rem 1rem; border-radius:50px; font-size:0.75rem; font-weight:600; letter-spacing:0.5px;">{trial_status}</span>
+<div style="text-align:center; margin-bottom:0.5rem; margin-top:-1rem;">
+    <span style="background:rgba(123,47,247,0.1); border:1px solid rgba(123,47,247,0.2); color:rgba(123,47,247,0.7); padding:0.2rem 0.8rem; border-radius:50px; font-size:0.7rem; font-weight:600; letter-spacing:0.5px;">{trial_status}</span>
 </div>""", unsafe_allow_html=True)
 
 if not has_access:
