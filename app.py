@@ -431,7 +431,7 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 [data-testid="stHeader"] { display: none; }
 .main .block-container { padding-top: 0 !important; }
 .login-wrapper {
-    display: flex; justify-content: center; align-items: center; min-height: 60vh;
+    display: flex; justify-content: center; align-items: center; min-height: 40vh;
     background: #06060f;
     font-family: 'Inter', sans-serif; position: relative; overflow: hidden;
 }
