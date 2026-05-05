@@ -606,7 +606,7 @@ has_access, reason, trial_status = check_access(st.session_state.user_email)
 
 st.markdown(f"""
 <div style="text-align:center; margin-bottom:0.8rem; margin-top:0.5rem;">
-    <span style="background:rgba(123,47,247,0.1); border:1px solid rgba(123,47,247,0.2); color:rgba(123,47,247,0.7); padding:0.2rem 0.8rem; border-radius:50px; font-size:0.7rem; font-weight:600; letter-spacing:0.5px;">{trial_status}</span>
+    <span style="background:rgba(123,47,247,0.1); border:1px solid rgba(123,47,247,0.2); color:#ffffff; padding:0.2rem 0.8rem; border-radius:50px; font-size:0.7rem; font-weight:600; letter-spacing:0.5px;">{trial_status}</span>
 </div>""", unsafe_allow_html=True)
 
 if not has_access:
