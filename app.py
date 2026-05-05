@@ -57,11 +57,12 @@ st.markdown("""
     ::-webkit-scrollbar { width:5px; }
     ::-webkit-scrollbar-track { background:transparent; }
     ::-webkit-scrollbar-thumb { background:rgba(123,47,247,0.3); border-radius:10px; }
+    .main .block-container { padding-top: 1rem !important; }
 
     /* ══ HERO HEADER ══ */
     .hero-header {
         background: linear-gradient(135deg, #0a0a1a 0%, #1a1040 40%, #0d0d2a 100%);
-        border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 2rem; text-align: center;
+        border-radius: 20px; padding: 1.2rem 2rem; margin-bottom: 1rem; text-align: center;
         border: 1px solid rgba(123,47,247,0.15);
         box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
         position: relative; overflow: hidden;
@@ -73,12 +74,12 @@ st.markdown("""
         pointer-events:none;
     }
     .hero-header h1 {
-        font-size: 2.6rem; font-weight: 900; position:relative;
+        font-size: 1.8rem; font-weight: 900; position:relative;
         background: linear-gradient(135deg, #00d2ff, #7b2ff7 50%, #ff6bcb);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        margin-bottom: 0.4rem; letter-spacing:-0.02em;
+        margin-bottom: 0.2rem; letter-spacing:-0.02em;
     }
-    .hero-header p { color: rgba(240,240,245,0.5); font-size: 0.95rem; font-weight: 400; position:relative; }
+    .hero-header p { color: rgba(240,240,245,0.5); font-size: 0.85rem; font-weight: 400; position:relative; }
 
     /* ══ SCORE CARDS ══ */
     .score-card {
