@@ -429,14 +429,15 @@ border: 1px solid rgba(123,47,247,0.3); border-radius: 16px; padding: 2.5rem; te
 [data-testid="stSidebar"] { display: none; }
 [data-testid="collapsedControl"] { display: none; }
 [data-testid="stHeader"] { display: none; }
-html, body, .stApp, [data-testid="stAppViewContainer"], .login-wrapper {
+html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stVerticalBlock"], .login-wrapper {
     background: #06060f !important;
     overflow: hidden !important;
     height: 100vh !important;
+    padding-top: 0 !important;
 }
 ::-webkit-scrollbar { display: none !important; }
 * { scrollbar-width: none !important; -ms-overflow-style: none !important; }
-.main .block-container { padding: 0 !important; }
+.main .block-container { padding: 0 !important; margin-top: -2rem !important; }
 
 .login-wrapper {
     display: flex; justify-content: center; align-items: flex-start;
