@@ -507,13 +507,20 @@ Continue with Microsoft
         st.markdown('<div class="login-divider">OR</div>', unsafe_allow_html=True)
 
         email_input = st.text_input("Email Address", placeholder="name@company.com", label_visibility="collapsed")
-        if st.button("Continue with Email →", type="primary", use_container_width=True):
-            if "@" in email_input:
-                user = login_user(email_input)
+        c1, c2 = st.columns([1, 1])
+        with c1:
+            if st.button("Continue with Email →", type="primary", use_container_width=True):
+                if "@" in email_input:
+                    user = login_user(email_input)
+                    st.session_state.user_email = user["email"]
+                    st.rerun()
+                else:
+                    st.error("Please enter a valid email address.")
+        with c2:
+            if st.button("Skip Login (Dev Mode) 🔓", use_container_width=True):
+                user = login_user("guest@example.com")
                 st.session_state.user_email = user["email"]
                 st.rerun()
-            else:
-                st.error("Please enter a valid email address.")
 
     st.stop()
 
