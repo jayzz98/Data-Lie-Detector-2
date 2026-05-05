@@ -41,8 +41,8 @@ async def get_app(request: Request):
         owner = os.environ.get("REPL_OWNER", "user")
         public_app_url = f"https://8502.{slug}.{owner}.replit.dev"
     elif "loca.lt" in host:
-        # For LocalTunnel, we assume a second tunnel is running for Streamlit
-        public_app_url = f"https://dataliedetector-streamlit.loca.lt"
+        # For LocalTunnel, we use the newly assigned active tunnel
+        public_app_url = f"https://hungry-octopus-92.loca.lt"
     elif not host == "localhost":
         # On Render, we use a public proxy or simply the host with the correct port
         # Since Render only exposes one port, we must ensure the iframe can see the background process
