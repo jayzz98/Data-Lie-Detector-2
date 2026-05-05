@@ -503,7 +503,7 @@ Continue with Microsoft
 <button type="submit" style="background: #7b2ff7; color: white; border: none; border-radius: 10px; padding: 0.7rem; width: 100%; font-weight: 700; cursor: pointer; font-size: 0.9rem;">Continue with Email →</button>
 </form>
 <div style="margin-top:0.8rem;">
-<a href="?login_email=guest_{int(time.time())}@{request.url.hostname or 'example.com'}" target="_self" style="color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.8rem; font-weight: 600;">Continue as Guest</a>
+<a href="?login_email=guest_{int(time.time())}@dataliedetector.com" target="_self" style="color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.8rem; font-weight: 600;">Continue as Guest</a>
 </div>
 </div>
 </div>
