@@ -43,7 +43,7 @@ async def get_app(request: Request):
         public_app_url = f"https://8502.{slug}.{owner}.replit.dev"
     elif "trycloudflare.com" in host:
         # Seamlessly redirect to the analysis engine tunnel
-        public_app_url = f"https://encouraging-pac-becoming-benz.trycloudflare.com"
+        public_app_url = f"https://productions-translated-workshops-elliott.trycloudflare.com"
     elif not host == "localhost":
         public_app_url = f"https://{host}"
     else:
