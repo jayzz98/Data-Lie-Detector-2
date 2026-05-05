@@ -32,13 +32,20 @@ async def get_landing():
 
 @app.get("/app")
 async def get_app(request: Request):
-    # Detect the public URL from Replit environment or use local host
+    # Determine the public URL for the Streamlit iframe
+    # In production (Render), everything must go through the main domain
+    host = request.url.hostname or "localhost"
+    
     if "REPL_SLUG" in os.environ:
         slug = os.environ.get("REPL_SLUG")
         owner = os.environ.get("REPL_OWNER", "user")
         public_app_url = f"https://8502.{slug}.{owner}.replit.dev"
+    elif not host == "localhost":
+        # On Render, we use a public proxy or simply the host with the correct port
+        # Since Render only exposes one port, we must ensure the iframe can see the background process
+        public_app_url = f"https://{host}"
     else:
-        host = request.url.hostname or "localhost"
+        # Local development fallback
         public_app_url = f"http://{host}:8502"
     
     html_content = f"""
@@ -55,7 +62,7 @@ async def get_app(request: Request):
         </style>
     </head>
     <body>
-        <iframe src="{public_app_url}/?embedded=true"></iframe>
+        <iframe src="{public_app_url}" allow="geolocation; microphone; camera; clipboard-read; clipboard-write;"></iframe>
     </body>
     </html>
     """
