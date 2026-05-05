@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import base64
 import os
+import time
 
 def get_base64_image(image_path):
     if os.path.exists(image_path):
