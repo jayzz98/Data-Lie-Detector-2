@@ -473,15 +473,14 @@ div[data-testid="stVerticalBlock"] > div { margin-top: -5px !important; }
     background: rgba(255,255,255,0.08); transform: translateY(-2px); border-color: rgba(0,164,239,0.5);
 }
 .login-divider {
-    display: flex; align-items: center; gap: 1rem; margin: -5rem 0 0.5rem 0 !important;
-    color: rgba(255,255,255,0.2); font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
-    position: relative; z-index: 20;
+    display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0;
+    color: rgba(255,255,255,0.2); font-size: 0.7rem; font-weight: 600; letter-spacing: 1px;
 }
 .login-divider::before, .login-divider::after {
     content:''; flex:1; height:1px; background: rgba(255,255,255,0.08);
 }
 [data-testid="stVerticalBlock"] > div:nth-child(2) {
-    margin-top: -6rem !important;
+    margin-top: -10rem !important;
 }
 </style>
 """
@@ -500,6 +499,7 @@ Continue with Google
 <svg width="18" height="18" viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg>
 Continue with Microsoft
 </a>
+<div class="login-divider">OR</div>
 </div>
 </div>
 """
@@ -508,8 +508,6 @@ Continue with Microsoft
 
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.markdown('<div class="login-divider">OR</div>', unsafe_allow_html=True)
-
         email_input = st.text_input("Email Address", placeholder="name@company.com", label_visibility="collapsed")
         c1, c2 = st.columns([1, 1])
         with c1:
