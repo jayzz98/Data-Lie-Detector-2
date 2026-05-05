@@ -62,7 +62,7 @@ st.markdown("""
     /* ══ HERO HEADER ══ */
     .hero-header {
         background: linear-gradient(135deg, #0a0a1a 0%, #1a1040 40%, #0d0d2a 100%);
-        border-radius: 20px; padding: 1.2rem 2rem; margin-bottom: 0.5rem; text-align: center;
+        border-radius: 20px; padding: 0.4rem 1.5rem; margin-bottom: 0.5rem; text-align: center;
         border: 1px solid rgba(123,47,247,0.15); margin-top: -4rem !important;
         box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
         position: relative; overflow: hidden;
