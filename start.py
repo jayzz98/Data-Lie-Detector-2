@@ -2,49 +2,47 @@ import subprocess
 import sys
 import os
 import time
+import webbrowser
 
-def main():
-    print("Starting Data Lie Detector unified server...")
+def start_unified_app():
+    print("🚀 Starting Data Lie Detector (Unified One-Link Version)...")
     
-    # Get absolute path to the project root
-    project_root = os.path.dirname(os.path.abspath(__file__))
-    landing_dir = os.path.join(project_root, "landing")
+    # 1. Kill any existing processes on port 8000
+    if os.name == 'nt': # Windows
+        subprocess.run("taskkill /F /IM python.exe /T", shell=True, capture_output=True)
     
-    # 1. Start the unified FastAPI server on port 8000
-    print(f"Starting unified FastAPI server on http://localhost:8000...")
-    env = os.environ.copy()
-    env["PORT"] = "8000"
-    landing_server = subprocess.Popen(
-        [sys.executable, "main.py"],
-        cwd=project_root,
-        env=env,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL
+    # 2. Start Streamlit on the primary port (8000)
+    # This serves both the landing page and the app natively
+    print("📦 Launching App Engine on http://localhost:8000")
+    streamlit_proc = subprocess.Popen(
+        [sys.executable, "-m", "streamlit", "run", "app.py", 
+         "--server.port", "8000", 
+         "--server.address", "0.0.0.0",
+         "--server.headless", "true"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True
     )
     
-    # 2. Start the Streamlit app on port 8502
-    print(f"Starting Streamlit app on http://localhost:8502...")
-    app_server = subprocess.Popen(
-        [sys.executable, "-m", "streamlit", "run", "app.py", "--server.port", "8502", "--server.address", "localhost"],
-        cwd=project_root
-    )
+    # Wait for the server to start
+    print("⏳ Waiting for server to initialize...")
+    time.sleep(5)
     
-    print("\n" + "="*50)
-    print("Servers are running!")
-    print("Website: http://localhost:8000")
-    print("App:     http://localhost:8502")
-    print("="*50 + "\n")
-    print("Press Ctrl+C to stop both servers.")
+    # Open the browser
+    webbrowser.open("http://localhost:8000")
+    
+    print("\n✅ System is LIVE at http://localhost:8000")
+    print("Press Ctrl+C to stop the servers.")
     
     try:
-        # Keep the main process alive
         while True:
-            time.sleep(1)
+            line = streamlit_proc.stdout.readline()
+            if line:
+                print(f"[App] {line.strip()}")
+            time.sleep(0.1)
     except KeyboardInterrupt:
-        print("\nStopping servers...")
-        landing_server.terminate()
-        app_server.terminate()
-        print("Goodbye!")
+        print("\n🛑 Stopping servers...")
+        streamlit_proc.terminate()
 
 if __name__ == "__main__":
-    main()
+    start_unified_app()
