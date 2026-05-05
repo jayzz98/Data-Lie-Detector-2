@@ -484,32 +484,18 @@ Continue with Google
 Continue with Microsoft
 </a>
 <div class="login-divider">OR</div>
+<form action="/" method="get">
+<input type="email" name="login_email" placeholder="name@company.com" style="background: rgba(13,13,26,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.6rem; width: 100%; color: white; font-size: 0.9rem; margin-bottom: 0.8rem; outline: none; box-sizing: border-box;" required>
+<button type="submit" style="background: #7b2ff7; color: white; border: none; border-radius: 10px; padding: 0.7rem; width: 100%; font-weight: 700; cursor: pointer; font-size: 0.9rem;">Continue with Email →</button>
+</form>
+<div style="margin-top:0.8rem;">
+<a href="?login_email=guest@example.com" target="_self" style="color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.8rem; font-weight: 600;">Continue as Guest</a>
+</div>
 </div>
 </div>
 """
     
     st.markdown(css_code + login_html, unsafe_allow_html=True)
-
-    # Place Email logic immediately after the main container using negative margin for tightness
-    st.markdown("<div style='margin-top: -16.5rem;'></div>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        email_input = st.text_input("Email Address", placeholder="name@company.com", label_visibility="collapsed")
-        c1, c2 = st.columns([1, 1])
-        with c1:
-            if st.button("Continue with Email →", type="primary", use_container_width=True):
-                if "@" in email_input:
-                    user = login_user(email_input)
-                    st.session_state.user_email = user["email"]
-                    st.rerun()
-                else:
-                    st.error("Please enter a valid email address.")
-        with c2:
-            if st.button("Continue as Guest", use_container_width=True):
-                user = login_user("guest@example.com")
-                st.session_state.user_email = user["email"]
-                st.rerun()
-
     st.stop()
 
 # ═══════════════════════════════════════════════════════════════════════
