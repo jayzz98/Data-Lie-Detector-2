@@ -66,7 +66,7 @@ st.markdown("""
     /* ══ HERO HEADER ══ */
     .hero-header {
         background: linear-gradient(135deg, #0a0a1a 0%, #1a1040 40%, #0d0d2a 100%);
-        border-radius: 20px; padding: 0.4rem 1.5rem; margin-bottom: 0.5rem; text-align: center;
+        border-radius: 20px; padding: 0.2rem 1.5rem; margin-bottom: 0.5rem; text-align: center;
         border: 1px solid rgba(123,47,247,0.15); margin-top: -4rem !important;
         box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
         position: relative; overflow: hidden;
@@ -78,9 +78,8 @@ st.markdown("""
         pointer-events:none;
     }
     .hero-header h1 {
-        font-size: 1.8rem; font-weight: 900; position:relative;
-        background: linear-gradient(135deg, #00d2ff, #7b2ff7 50%, #ff6bcb);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        font-size: 3.5rem; font-weight: 900; position:relative;
+        color: #ffffff !important;
         margin-bottom: 0.2rem; letter-spacing:-0.02em;
     }
     .hero-header p { color: rgba(240,240,245,0.5); font-size: 0.85rem; font-weight: 400; position:relative; }
