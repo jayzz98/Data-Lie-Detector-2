@@ -33,7 +33,7 @@ async def get_landing():
 async def get_app(request: Request):
     host = request.url.hostname or "localhost"
     # Use the active tunnel for the dashboard
-    public_app_url = "https://barry-ira-hardwood-annually.trycloudflare.com"
+    public_app_url = "https://recorders-path-investments-logos.trycloudflare.com"
     return RedirectResponse(url=public_app_url)
 
 # Serve the static files for the landing page

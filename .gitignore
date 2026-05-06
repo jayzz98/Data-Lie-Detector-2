@@ -1,0 +1,7 @@
+.env
+users.json
+__pycache__/
+*.pyc
+.streamlit/
+Data_Lie_Detector_*.zip
+unzipped_test/
