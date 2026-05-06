@@ -9,7 +9,7 @@ st.set_page_config(
     page_title="Data Lie Detector",
     page_icon="🕵️",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 @st.cache_data
