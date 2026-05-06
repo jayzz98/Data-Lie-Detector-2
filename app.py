@@ -5,6 +5,14 @@ import base64
 import os
 import time
 
+st.set_page_config(
+    page_title="Data Lie Detector",
+    page_icon="🕵️",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
+@st.cache_data
 def get_base64_image(image_path):
     if os.path.exists(image_path):
         with open(image_path, "rb") as img_file:
@@ -35,12 +43,7 @@ from utils.auth import (
 # ═══════════════════════════════════════════════════════════════════════
 # PAGE CONFIG & PREMIUM CSS
 # ═══════════════════════════════════════════════════════════════════════
-st.set_page_config(
-    page_title="Data Lie Detector",
-    page_icon="assets/logo.png",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+# (Redundant page config removed for speed)
 
 
 
